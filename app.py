@@ -4,7 +4,6 @@ from components.custom_dashboard import custom_dashboard_ui
 import utils.data_handler
 
 app_ui = ui.page_navbar(
-    ui.nav_spacer(),
     ui.nav("Dashboard", dashboard_ui), 
     ui.nav("Custom", custom_dashboard_ui),
     title="Res-Q Dashboard",

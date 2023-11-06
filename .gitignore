@@ -1,0 +1,8 @@
+#venv
+venv
+
+#tmp files
+__pycache__
+
+#CSV file
+*.csv

@@ -1,10 +1,15 @@
-# Page1.py
-from shiny import ui
+from shiny import ui, render, Inputs, Outputs, Session
+import matplotlib.pyplot as plt
+import utils.data_handler
 
 dashboard_ui = ui.page_fluid(
-    ui.h1("Contenu de l'onglet 1")
+    ui.h1('test'),
+    ui.output_plot("a_scatter_plot"),
 )
 
-def page_1_server(input, output, session):
-    # Aucune logique particulière pour cet exemple
-    pass
+def dashboard_server(input: Inputs, output: Outputs, session: Session, data_handler : utils.data_handler):
+    @output
+    @render.plot
+    def a_scatter_plot():
+        return plt.scatter([1,2,3], [5, 2, 3])
+    

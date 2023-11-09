@@ -1,29 +1,34 @@
-from shiny import ui, render, Inputs, Outputs, Session
-import utils.data_handler
+from shiny import ui
 
 def plot_characteristics_ui(id):
     return ui.card(
-        ui.h4("Plot characteristics"),
-        ui.output_ui(f"qi_selector_{id}"),
-        ui.output_ui(f"selected_qi_value_{id}"),
+        ui.card_header(
+            ui.h5("Plot characteristics")
+        ),
+        # Qi x-axis select input. 
+        ui.output_ui(f"x_qi_selector_{id}"),
+        ui.output_ui(f"x_selected_qi_value_{id}"),
+
+        # Qi y-axis select input
+        ui.output_ui(f"y_qi_selector_{id}"),
+        ui.output_ui(f"y_selected_qi_value_{id}"),
+
+        # Factor to compare select input
+        ui.output_ui(f"factor_to_compare_{id}"),
+
+        # Aggregation type
+        ui.output_ui(f"aggregation_type_{id}"),
+        
+        # Mean checkbox 
+        ui.output_ui(f"checkbox_mean_{id}"),
+
+        # Median checkbox 
+        ui.output_ui(f"checkbox_median_{id}"),
+
+        # Trend checkbox
+        ui.output_ui(f"checkbox_trend_{id}"),
+
+        # error bars checkbox
+        ui.output_ui(f"checkbox_error_bar_{id}"),
+
     ),
-
-def plot_characteristics_server(input: Inputs, output: Outputs, session: Session, data_handler : utils.data_handler, id: str):
-
-    qi_value = data_handler.get_qi_data()
-    input_id = f"qi_select_{id}"
-    tooltip_id = f"qi_tooltip_{id}"
-    
-    @output
-    @render.ui
-    def qi_selector_timeline():
-        return ui.tooltip(ui.input_select(id=f"{input_id}", label="bob", choices=list(qi_value.keys())), "", id=tooltip_id)
-
-    @output
-    @render.ui
-    def selected_qi_value_timeline():
-        selected_value = input[input_id].get()
-        if type(qi_value[selected_value]['commentsInfo']) is str:
-            return ui.update_tooltip(tooltip_id, f"{selected_value}: {qi_value[selected_value]['commentsInfo']}")
-        else:
-            return ui.update_tooltip(tooltip_id, f"{selected_value}")

@@ -25,7 +25,7 @@ distribution_dashboard_ui = ui.layout_sidebar(
 )
 
 def distribution_dashboard_server(input: Inputs, output: Outputs, session: Session, data_handler : utils.data_handler):
-    qi_value = data_handler.get_qi_data()
+    qi_value = data_handler.get_filter_data()
     
     @output
     @render.ui

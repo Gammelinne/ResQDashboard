@@ -3,10 +3,13 @@ from components.dashboard import dashboard_ui, dashboard_server
 from components.custom_dashboard import custom_dashboard_ui, custom_dashboard_server
 import utils.data_handler
 
-app_ui = ui.page_navbar(
-    ui.nav("Dashboard", dashboard_ui), 
-    ui.nav("Custom", custom_dashboard_ui),
-    title="Res-Q Dashboard",
+app_ui = ui.page_bootstrap(
+    ui.navset_bar(
+        ui.nav("Dashboard", dashboard_ui), 
+        ui.nav("Custom", custom_dashboard_ui),
+        title="Res-Q Dashboard",
+    ),
+    ui.div(ui.HTML("<script src='https://unpkg.com/@rasahq/rasa-chat' type='application/javascript'></script><div id='rasa-chat-widget' data-websocket-url='https://your-rasa-url-here/'></div>")),
     window_title="Res-Q Dashboard",
 )
 

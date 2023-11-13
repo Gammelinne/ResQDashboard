@@ -17,11 +17,11 @@ comparison_dashboard_ui = ui.layout_sidebar(
         width=500,
         title="comparison",
     ),
-    ui.output_plot("comparison_plot")
+    ui.output_plot("comparison_plot"),
 )
 
 def comparison_dashboard_server(input: Inputs, output: Outputs, session: Session, data_handler : utils.data_handler):
-    qi_value = data_handler.get_qi_data()
+    qi_value = data_handler.get_filter_data()
     
     @output
     @render.ui

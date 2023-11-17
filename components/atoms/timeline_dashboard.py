@@ -27,9 +27,7 @@ timeline_dashboard_ui = ui.layout_sidebar(
     ui.output_data_frame("timeline_table")
 )
 
-def timeline_dashboard_server(input: Inputs, output: Outputs, session: Session, data_handler : utils.data_handler):
-
-    qi_value = data_handler.get_filter_data()
+def timeline_dashboard_server(input: Inputs, output: Outputs, session: Session, data_handler : utils.data_handler, qi_value: utils.data_handler):
     dataframe = data_handler.get_data()
     plot_handler = utils.plot_handler.PlotHandler()
     
@@ -73,19 +71,19 @@ def timeline_dashboard_server(input: Inputs, output: Outputs, session: Session, 
     @render.plot
     def timeline_plot():
         #data_csv = dataframe
-        qi_name =  input["qi_select_timeline"].get()
-        # site_names = input["list_site_timeline"].get()
-        # gender = input["list_gender_timeline"].get()
-        # imagine_done= input["list_imagine_timeline"].get()
-        # prenotification = input["list_prenotifiction_timeline"].get()
-        # discharge_mrs = input["list_mrs_timeline"].get()
-        # filterquarts = input["slider_x_timeline"].get()
-        # qi_error = input["checkbox_error_timeline"].get()
-        # qi_trend = input["checkbox_trend_timeline"].get()
-        # compare_country = input["checkbox_compare_contry_timeline"].get()
-        # aggregation_type = input["aggregation_type_timeline"].get()
-
+        qi_name =  input["qi_select_timeline"].get() #String (referenceDataColumns) default: subject_id
+        #site_names = input["list_site_timeline"].get() #Array (["General", "Hope", "Paradise", "Rose", "Angelvale", "Mercy"], ()) default: ()
+        gender = input["list_gender_timeline"].get() #Array (["Male", "Female"] or ()) default: ["Male", "Female"] 
+        # imagine_done= input["list_imagine_timeline"].get() #Array ([Done, "Not done"], ()) default: [Done, "Not done"]
+        # prenotification = input["list_prenotifiction_timeline"].get() #Array (["Prenotified", "Not Prenotified"], ()) default: ["Prenotified", "Not Prenotified"]
+        # discharge_mrs = input["list_mrs_timeline"].get() #Array (["1", "2","3","4","5","6"], ()) default: ["1", "2","3","4","5","6"]
+        # year_quarter = input["slider_x_timeline"].get() #Array (["2018 Q1", "2018 Q2", ..., "2022 Q4"], ()) default: ["2018 Q1", "2018 Q2", ..., "2022 Q4"]
+        # qi_error = input["checkbox_error_timeline"].get() #Bool default: False
+        # qi_trend = input["checkbox_trend_timeline"].get() #Bool: default: False
+        # compare_country = input["checkbox_compare_contry_timeline"].get() #Bool default: False
+        # aggregation_type = input["aggregation_type_timeline"].get() #String "median", "mean", "standard derivation", "minimum", "maximum" default: median
         data = dataframe[dataframe["QI"] == qi_value[qi_name]["referenceDataColumns"]].dropna()
+        print(gender)
         data = data.groupby("YQ")["Value"].mean()
         x = data.index
         y = data.values 

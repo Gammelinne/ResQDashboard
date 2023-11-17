@@ -13,7 +13,8 @@ custom_dashboard_ui = ui.navset_tab(
 )
 
 def custom_dashboard_server(input: Inputs, output: Outputs, session: Session, data_handler : utils.data_handler):
-    timeline_dashboard_server(input, output, session, data_handler)
-    distribution_dashboard_server(input, output, session, data_handler)
-    correlation_dashboard_server(input, output, session, data_handler)
-    comparison_dashboard_server(input, output, session, data_handler)
+    qi_value = data_handler.get_filter_data()
+    timeline_dashboard_server(input, output, session, data_handler, qi_value)
+    distribution_dashboard_server(input, output, session, qi_value)
+    correlation_dashboard_server(input, output, session, qi_value)
+    comparison_dashboard_server(input, output, session, qi_value)

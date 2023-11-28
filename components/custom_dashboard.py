@@ -1,4 +1,4 @@
-from shiny import ui, render, Inputs, Outputs, Session, reactive, req
+from shiny import ui, Inputs, Outputs, Session
 import utils.data_handler
 from components.atoms.timeline_dashboard import timeline_dashboard_ui, timeline_dashboard_server
 from components.atoms.distribution_dashboard import distribution_dashboard_ui, distribution_dashboard_server
@@ -14,7 +14,9 @@ custom_dashboard_ui = ui.navset_tab(
 
 def custom_dashboard_server(input: Inputs, output: Outputs, session: Session, data_handler : utils.data_handler):
     qi_value = data_handler.get_filter_data()
-    timeline_dashboard_server(input, output, session, data_handler, qi_value)
-    distribution_dashboard_server(input, output, session, qi_value)
-    correlation_dashboard_server(input, output, session, qi_value)
-    comparison_dashboard_server(input, output, session, qi_value)
+    plot_handler = utils.plot_handler.PlotHandler()
+    dataframe = data_handler.get_data()
+    timeline_dashboard_server(input, output, session, data_handler, qi_value, plot_handler, dataframe)
+    distribution_dashboard_server(input, output, data_handler, session, qi_value, plot_handler, dataframe)
+    correlation_dashboard_server(input, output, session,data_handler, qi_value, plot_handler, dataframe)
+    comparison_dashboard_server(input, output, session,data_handler, qi_value,plot_handler, dataframe)

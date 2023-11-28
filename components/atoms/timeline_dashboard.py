@@ -27,10 +27,7 @@ timeline_dashboard_ui = ui.layout_sidebar(
     ui.output_data_frame("timeline_table")
 )
 
-def timeline_dashboard_server(input: Inputs, output: Outputs, session: Session, data_handler : utils.data_handler, qi_value: utils.data_handler):
-    dataframe = data_handler.get_data()
-    plot_handler = utils.plot_handler.PlotHandler()
-    
+def timeline_dashboard_server(input: Inputs, output: Outputs, session: Session, data_handler : utils.data_handler, qi_value: utils.data_handler, plot_handler: utils.plot_handler, dataframe: utils.data_handler):
     @output
     @render.ui
     def y_qi_selector_timeline():

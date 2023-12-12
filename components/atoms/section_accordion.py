@@ -45,7 +45,6 @@ def section_server(input: Inputs, output: Outputs, session: Session):
        
             if len(QICategory['aggregatedGroupsName'].unique()) % 2 == 1: 
                 fig.delaxes(axs[-1, -1])
-            plt.tight_layout()
             return fig
         else : 
             return plt.plot([1,2,3],[1,2,3])

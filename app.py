@@ -11,7 +11,7 @@ app_ui = ui.page_bootstrap(
         ui.nav('Rasa', rasa_dashboard_ui),
         title="Res-Q Dashboard",
     ),
-    ui.div(ui.HTML("<div id='rasa-chat-widget' data-websocket-url='https://localhost:5005'></div><script src='https://unpkg.com/@rasahq/rasa-chat' type='application/javascript'></script>")),
+    ui.div(ui.HTML("<div id='rasa-chat-widget' data-websocket-url='http://localhost:5005/socket.io'></div><script src='https://unpkg.com/@rasahq/rasa-chat' type='application/javascript'></script>")),
     window_title="Res-Q Dashboard",
 )
 

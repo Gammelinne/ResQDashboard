@@ -72,7 +72,6 @@ def comparison_dashboard_server(input: Inputs, output: Outputs, session: Session
         # compare_country = input["checkbox_compare_contry_comparison"].get()
         # aggregation_type = input["aggregation_type_comparison"].get()
         data = dataframe[dataframe["QI"] == qi_value[qi_name]["referenceDataColumns"]].dropna()
-        print(gender)
         data = data.groupby("YQ")["Value"].mean()
         x = data.index
         y = data.values 

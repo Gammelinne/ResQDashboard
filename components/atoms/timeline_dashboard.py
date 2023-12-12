@@ -80,7 +80,6 @@ def timeline_dashboard_server(input: Inputs, output: Outputs, session: Session, 
         # compare_country = input["checkbox_compare_contry_timeline"].get() #Bool default: False
         # aggregation_type = input["aggregation_type_timeline"].get() #String "median", "mean", "standard derivation", "minimum", "maximum" default: median
         data = dataframe[dataframe["QI"] == qi_value[qi_name]["referenceDataColumns"]].dropna()
-        print(gender)
         data = data.groupby("YQ")["Value"].mean()
         x = data.index
         y = data.values 

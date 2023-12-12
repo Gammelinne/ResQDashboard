@@ -7,7 +7,7 @@ csv = pd.read_csv("assets/filter.csv")
 categories = csv['QICategory'].unique()
     
 sections = [
-    ui.accordion_panel(f"Section {categorie}", section_ui(categorie))
+    ui.accordion_panel(f"Section {categorie}", section_ui(categorie, categorie))
     for categorie in categories
 ]
 

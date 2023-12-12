@@ -68,7 +68,6 @@ def distribution_dashboard_server(input: Inputs, output: Outputs, session: Sessi
         # compare_country = input["checkbox_compare_contry_distribution"].get()
         # aggregation_type = input["aggregation_type_distribution"].get()
         data = dataframe[dataframe["QI"] == qi_value[qi_name]["referenceDataColumns"]].dropna()
-        print(gender)
         data = data.groupby("YQ")["Value"].mean()
         x = data.index
         y = data.values 

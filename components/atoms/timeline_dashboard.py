@@ -50,7 +50,8 @@ def timeline_dashboard_server(input: Inputs, output: Outputs, session: Session, 
     @output
     @render.data_frame
     def timeline_table():
-        return dataframe[dataframe["QI"] == qi_value[input["qi_select_timeline"].get()]["referenceDataColumns"]].dropna()
+        selected_columns = ["site_country", "site_name", "site_id", "YQ", "Value"]
+        return dataframe[dataframe["QI"] == qi_value[input["qi_select_timeline"].get()]["referenceDataColumns"]][selected_columns].dropna()
     
     @output
     @render.ui

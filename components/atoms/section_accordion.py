@@ -8,7 +8,7 @@ csv = pd.read_csv("assets/filter.csv")
 def section_ui(categorie):
     QICategory = csv[csv['QICategory'] == categorie]
     if len(QICategory['aggregatedGroupsName'].unique()) > 1: 
-        return ui.output_plot("output_plot", height=(len(QICategory['aggregatedGroupsName'].unique()))*300)
+        return ui.output_plot("output_plot", height=(len(QICategory['aggregatedGroupsName'].unique()))*300) #Change Height here
     else:
         return ui.output_plot("output_plot")
 

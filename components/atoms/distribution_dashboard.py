@@ -76,4 +76,5 @@ def distribution_dashboard_server(input: Inputs, output: Outputs, session: Sessi
     @output
     @render.data_frame
     def distribution_table():
-        return dataframe[dataframe["QI"] == qi_value[input["qi_select_distribution"].get()]["referenceDataColumns"]].dropna()
+        selected_columns = ["site_country", "site_name", "site_id", "YQ", "Value"]
+        return dataframe[dataframe["QI"] == qi_value[input["qi_select_timeline"].get()]["referenceDataColumns"]][selected_columns].dropna()

@@ -11,4 +11,4 @@ def rasa_dashboard_server(input: Inputs, output: Outputs, session: Session, data
     @output
     @render.plot
     def rasa_plot():
-        return plt.plot([1,2,3], [1,2,3])
+        pass

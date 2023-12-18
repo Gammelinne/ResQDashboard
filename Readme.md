@@ -6,12 +6,6 @@ This repository contains the code for an interactive web application developed u
 
 ## Features
 
-### Dashboard Tab
-
-- **User Interface (UI):** The UI is designed for a rich and convenient visual experience, featuring informative cards and accordion sections.
-- **Reactive Updates:** The server logic coordinates data processing and updates the UI reactively in response to user interactions.
-- **Shiny Modules:** Overcame the challenge of creating unique graphs for each category using Shiny modules, enhancing code modularity and reusability.
-
 ### Custom Dashboard Tab
 
 #### Timeline Tab
@@ -33,3 +27,6 @@ This repository contains the code for an interactive web application developed u
 
 - **Comparing Data Subgroups:** Users can compare various aspects, such as gender, mRS score, or completion of imaging exams.
 - **Detailed Comparative View:** The `comparison_dashboard_server` function generates comparison graphs offering a detailed view of the data.
+
+### Dashboard Tab
+- **Overview:** Users can see every type of data in the same view.

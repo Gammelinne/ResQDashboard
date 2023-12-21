@@ -1,4 +1,4 @@
-# Shiny Python Web Application
+# Shiny Python Web Dashboard
 
 ## Overview
 
